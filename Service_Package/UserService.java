@@ -12,8 +12,15 @@ public class UserService {
     public void addUser(String name, String phone, String email) {
         User existingUser = repository.findUserByName(name);
         if (existingUser != null && name.equals(existingUser.getName())) {
-            existingUser.setPhoneNumber(phone);
-            System.out.println("User already exists. Phone number updated.");
+            if (phone != null && !phone.isEmpty()) {
+                existingUser.setPhoneNumber(phone);
+            }
+            if (email != null && !email.isEmpty()) {
+                existingUser.setEmail(email);
+            }
+            // existingUser.setPhoneNumber(phone);
+            // existingUser.setEmail(email);
+            System.out.println("User already exists. Details updated.");
             return;
         }
         User user = new User(name, phone, email);
@@ -40,7 +47,7 @@ public class UserService {
 
     public void searchUserByNumber(String phone) {
         boolean user = repository.findUserByNumber(phone);
-        if(user == false){
+        if (user == false) {
             System.out.println("User not found.");
         }
     }
