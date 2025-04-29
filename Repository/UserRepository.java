@@ -38,9 +38,9 @@ public class UserRepository {
     }
 
     public boolean findUserByNumber(String phone) {
-    	boolean flag=false;
+        boolean flag = false;
         for (User user : userDatabase.keySet()) {
-        	String temp = user.getPhoneNumber();
+            ArrayList<String> temp = user.getPhoneNumber();
             if (temp.contains(phone)) {
                 System.out.println(user);
                 flag = true;

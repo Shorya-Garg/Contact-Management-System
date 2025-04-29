@@ -6,12 +6,12 @@ import java.util.Objects;
 public class User {
     private String name;
     private ArrayList<String> phoneNumber = new ArrayList<>();
-    private String email;
+    private ArrayList<String> email = new ArrayList<>();
 
     public User(String name, String phoneNumber, String email) {
         this.name = name;
         this.phoneNumber.add(phoneNumber);
-        this.email = email;
+        this.email.add(email);
     }
 
     // Getters & Setters
@@ -23,7 +23,7 @@ public class User {
         return phoneNumber;
     }
 
-    public String getEmail() {
+    public ArrayList<String> getEmail() {
         return email;
     }
 
@@ -32,7 +32,7 @@ public class User {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email.add(email);
     }
 
     @Override

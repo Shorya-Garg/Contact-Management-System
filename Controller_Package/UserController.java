@@ -37,9 +37,9 @@ public class UserController {
                 addContact();
             } else if (choice.equals("view contacts")) {
                 userService.viewUsers();
-            } else if (choice.equals("Search Contact by Name".toLowerCase()) {
+            } else if (choice.equals("Search Contact by Name".toLowerCase())) {
                searchContactByName();
-            }else if(choice.equals("Search Contact by Number".toLowerCase()){
+            }else if(choice.equals("Search Contact by Number".toLowerCase())){
               searchContactByNumber();
             }
       else if (choice.equals("delete contact")) {
@@ -78,16 +78,15 @@ public class UserController {
         userService.searchUserByNumber(phone);
     }
 
-
     private void deleteContact() {
-        searchContact();
+        searchContactByName();
         System.out.print("Enter Name to Delete: ");
         String name = scanner.nextLine();
         userService.deleteUser(name);
     }
 
     private void updateContact() {
-        searchContact();
+        searchContactByName();
         System.out.print("Enter Name to Update: ");
         String name = scanner.nextLine();
         System.out.print("Enter New Phone Number: ");
