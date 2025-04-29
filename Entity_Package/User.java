@@ -1,16 +1,17 @@
 package Entity_Package;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class User {
     private String name;
-    private String phoneNumber;
-    private String email;
+    private ArrayList<String> phoneNumber = new ArrayList<>();
+    private ArrayList<String> email = new ArrayList<>();
 
     public User(String name, String phoneNumber, String email) {
         this.name = name;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+        this.phoneNumber.add(phoneNumber);
+        this.email.add(email);
     }
 
     // Getters & Setters
@@ -18,20 +19,20 @@ public class User {
         return name;
     }
 
-    public String getPhoneNumber() {
+    public ArrayList<String> getPhoneNumber() {
         return phoneNumber;
     }
 
-    public String getEmail() {
+    public ArrayList<String> getEmail() {
         return email;
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber.add(phoneNumber);
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email.add(email);
     }
 
     @Override
@@ -41,8 +42,10 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof User))
+            return false;
         User user = (User) o;
         return name.equalsIgnoreCase(user.name);
     }
