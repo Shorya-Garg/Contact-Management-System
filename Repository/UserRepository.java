@@ -35,6 +35,18 @@ public class UserRepository {
         return flag;
     }
 
+    public boolean findUserByNumber(String phone) {
+    	boolean flag=false;
+        for (User user : userDatabase.keySet()) {
+        	String temp = user.getPhoneNumber();
+            if (temp.contains(phone)) {
+                System.out.println(user);
+                flag = true;
+            }
+        }
+        return flag;
+    }
+
     public boolean deleteUser(String name) {
         User user = findUserByName(name);
         if (user != null) {

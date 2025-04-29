@@ -19,10 +19,11 @@ public class UserController {
             System.out.println("\n=== Contact Management System ===");
             System.out.println("1. Add Contact");
             System.out.println("2. View Contacts");
-            System.out.println("3. Search Contact");
-            System.out.println("4. Delete Contact");
-            System.out.println("5. Update Contact");
-            System.out.println("6. Exit");
+            System.out.println("3. Search Contact by Name");
+            System.out.println("4. Search Contact by Number");
+            System.out.println("5. Delete Contact");
+            System.out.println("6. Update Contact");
+            System.out.println("7. Exit");
             System.out.print("Enter your choice: ");
 
             choice = scanner.nextInt();
@@ -36,21 +37,25 @@ public class UserController {
                     userService.viewUsers();
                     break;
                 case 3:
-                    searchContact();
+                    searchContactByName();
                     break;
                 case 4:
+                    searchContactByNumber();
+                    break;
+
+                case 5:
                     deleteContact();
                     break;
-                case 5:
+                case 6:
                     updateContact();
                     break;
-                case 6:
+                case 7:
                     System.out.println("Thank you for using Contact Manager. Goodbye!");
                     break;
                 default:
                     System.out.println("Invalid choice!");
             }
-        } while (choice != 6);
+        } while (choice != 7);
     }
 
     private void addContact() {
@@ -64,11 +69,18 @@ public class UserController {
         userService.addUser(name, phone, email);
     }
 
-    private void searchContact() {
+    private void searchContactByName() {
         System.out.print("Enter Name to Search: ");
         String name = scanner.nextLine();
-        userService.searchUser(name);
+        userService.searchUserByName(name);
     }
+
+    private void searchContactByNumber() {
+        System.out.print("Enter Number to Search: ");
+        String phone = scanner.nextLine();
+        userService.searchUserByNumber(phone);
+    }
+
 
     private void deleteContact() {
         System.out.print("Enter Name to Delete: ");
