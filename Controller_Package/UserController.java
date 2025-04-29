@@ -17,12 +17,15 @@ public class UserController {
         String choice;
         do {
             System.out.println("\n=== Contact Management System ===");
-            System.out.println("Add Contact");
-            System.out.println("View Contacts");
-            System.out.println("Search Contact");
-            System.out.println("Delete Contact");
-            System.out.println("Update Contact");
-            System.out.println("Exit");
+
+            System.out.println("1. Add Contact");
+            System.out.println("2. View Contacts");
+            System.out.println("3. Search Contact by Name");
+            System.out.println("4. Search Contact by Number");
+            System.out.println("5. Delete Contact");
+            System.out.println("6. Update Contact");
+            System.out.println("7. Exit");
+
             System.out.print("Enter your choice: ");
 
             choice = scanner.nextLine();
@@ -32,9 +35,12 @@ public class UserController {
                 addContact();
             } else if (choice.equals("view contacts")) {
                 userService.viewUsers();
-            } else if (choice.equals("search contact")) {
-                searchContact();
-            } else if (choice.equals("delete contact")) {
+            } else if (choice.equals("Search Contact by Name".toLowerCase()) {
+               searchContactByName();
+            }else if(choice.equals("Search Contact by Number".toLowerCase()){
+              searchContactByNumber();
+            }
+      else if (choice.equals("delete contact")) {
                 deleteContact();
             } else if (choice.equals("update contact")) {
                 updateContact();
@@ -58,11 +64,18 @@ public class UserController {
         userService.addUser(name, phone, email);
     }
 
-    private void searchContact() {
+    private void searchContactByName() {
         System.out.print("Enter Name to Search: ");
         String name = scanner.nextLine();
-        userService.searchUser(name);
+        userService.searchUserByName(name);
     }
+
+    private void searchContactByNumber() {
+        System.out.print("Enter Number to Search: ");
+        String phone = scanner.nextLine();
+        userService.searchUserByNumber(phone);
+    }
+
 
     private void deleteContact() {
         System.out.print("Enter Name to Delete: ");
