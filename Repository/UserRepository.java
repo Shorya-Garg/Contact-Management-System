@@ -1,6 +1,8 @@
 package Repository;
 
 import Entity_Package.User;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class UserRepository {
@@ -22,11 +24,11 @@ public class UserRepository {
         }
         return null;
     }
-    
+
     public boolean findUserInitials(String name) {
-    	boolean flag=false;
+        boolean flag = false;
         for (User user : userDatabase.keySet()) {
-        	String temp = user.getName().toLowerCase();
+            String temp = user.getName().toLowerCase();
             if (temp.contains(name.toLowerCase())) {
                 System.out.println(user);
                 flag = true;

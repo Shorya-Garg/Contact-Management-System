@@ -6,15 +6,15 @@ import java.util.Scanner;
 public class UserController {
     private UserService userService = new UserService();
     private Scanner scanner = new Scanner(System.in);
-    
-    
 
     public void start() {
+
     	userService.addUser("Ujjwal", "98765432", "ujjwal@gmail.com");
     	userService.addUser("Aditya", "986723432", "aditya@gmail.com");
     	userService.addUser("Shorya", "9445432", "shorya@gmail.com");
     	userService.addUser("Shreya", "9445432456", "shreya@gmail.com");
         String choice;
+
         do {
             System.out.println("\n=== Contact Management System ===");
 
@@ -28,8 +28,10 @@ public class UserController {
 
             System.out.print("Enter your choice: ");
 
+
             choice = scanner.nextLine();
             choice = choice.toLowerCase();
+
 
             if(choice.equals("add contact")) {
                 addContact();
@@ -78,12 +80,14 @@ public class UserController {
 
 
     private void deleteContact() {
+        searchContact();
         System.out.print("Enter Name to Delete: ");
         String name = scanner.nextLine();
         userService.deleteUser(name);
     }
 
     private void updateContact() {
+        searchContact();
         System.out.print("Enter Name to Update: ");
         String name = scanner.nextLine();
         System.out.print("Enter New Phone Number: ");
