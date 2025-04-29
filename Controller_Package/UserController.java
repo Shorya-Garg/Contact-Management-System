@@ -8,47 +8,51 @@ public class UserController {
     private Scanner scanner = new Scanner(System.in);
 
     public void start() {
-        userService.addUser("Ujjwal", "98765432", "ujjwal@gmail.com");
-        userService.addUser("Aditya", "986723432", "aditya@gmail.com");
-        userService.addUser("Shorya", "9445432", "shorya@gmail.com");
-        userService.addUser("Shreya", "9445432456", "shreya@gmail.com");
-        int choice;
+
+    	userService.addUser("Ujjwal", "98765432", "ujjwal@gmail.com");
+    	userService.addUser("Aditya", "986723432", "aditya@gmail.com");
+    	userService.addUser("Shorya", "9445432", "shorya@gmail.com");
+    	userService.addUser("Shreya", "9445432456", "shreya@gmail.com");
+        String choice;
+
         do {
             System.out.println("\n=== Contact Management System ===");
+
             System.out.println("1. Add Contact");
             System.out.println("2. View Contacts");
-            System.out.println("3. Search Contact");
-            System.out.println("4. Delete Contact");
-            System.out.println("5. Update Contact");
-            System.out.println("6. Exit");
+            System.out.println("3. Search Contact by Name");
+            System.out.println("4. Search Contact by Number");
+            System.out.println("5. Delete Contact");
+            System.out.println("6. Update Contact");
+            System.out.println("7. Exit");
+
             System.out.print("Enter your choice: ");
 
-            choice = scanner.nextInt();
-            scanner.nextLine();
 
-            switch (choice) {
-                case 1:
-                    addContact();
-                    break;
-                case 2:
-                    userService.viewUsers();
-                    break;
-                case 3:
-                    searchContact();
-                    break;
-                case 4:
-                    deleteContact();
-                    break;
-                case 5:
-                    updateContact();
-                    break;
-                case 6:
-                    System.out.println("Thank you for using Contact Manager. Goodbye!");
-                    break;
-                default:
-                    System.out.println("Invalid choice!");
+            choice = scanner.nextLine();
+            choice = choice.toLowerCase();
+
+
+            if(choice.equals("add contact")) {
+                addContact();
+            } else if (choice.equals("view contacts")) {
+                userService.viewUsers();
+            } else if (choice.equals("Search Contact by Name".toLowerCase()) {
+               searchContactByName();
+            }else if(choice.equals("Search Contact by Number".toLowerCase()){
+              searchContactByNumber();
             }
-        } while (choice != 6);
+      else if (choice.equals("delete contact")) {
+                deleteContact();
+            } else if (choice.equals("update contact")) {
+                updateContact();
+            } else if (choice.equals("exit")) {
+                System.out.println("Thank you for using Contact Manager. Goodbye!");
+            } else {
+                System.out.println("Invalid choice! Please try again.");
+            }
+
+        } while (!choice.equals("exit"));
     }
 
     private void addContact() {
@@ -62,11 +66,18 @@ public class UserController {
         userService.addUser(name, phone, email);
     }
 
-    private void searchContact() {
+    private void searchContactByName() {
         System.out.print("Enter Name to Search: ");
         String name = scanner.nextLine();
-        userService.searchUser(name);
+        userService.searchUserByName(name);
     }
+
+    private void searchContactByNumber() {
+        System.out.print("Enter Number to Search: ");
+        String phone = scanner.nextLine();
+        userService.searchUserByNumber(phone);
+    }
+
 
     private void deleteContact() {
         searchContact();

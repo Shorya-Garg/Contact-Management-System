@@ -31,9 +31,16 @@ public class UserService {
         }
     }
 
-    public void searchUser(String name) {
+    public void searchUserByName(String name) {
         boolean user = repository.findUserInitials(name);
         if (user == false) {
+            System.out.println("User not found.");
+        }
+    }
+
+    public void searchUserByNumber(String phone) {
+        boolean user = repository.findUserByNumber(phone);
+        if(user == false){
             System.out.println("User not found.");
         }
     }
