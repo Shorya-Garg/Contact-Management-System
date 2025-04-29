@@ -1,15 +1,16 @@
 package Entity_Package;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class User {
     private String name;
-    private String phoneNumber;
+    private ArrayList<String> phoneNumber = new ArrayList<>();
     private String email;
 
     public User(String name, String phoneNumber, String email) {
         this.name = name;
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber.add(phoneNumber);
         this.email = email;
     }
 
@@ -18,7 +19,7 @@ public class User {
         return name;
     }
 
-    public String getPhoneNumber() {
+    public ArrayList<String> getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -27,7 +28,7 @@ public class User {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        this.phoneNumber.add(phoneNumber);
     }
 
     public void setEmail(String email) {
@@ -41,8 +42,10 @@ public class User {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User)) return false;
+        if (this == o)
+            return true;
+        if (!(o instanceof User))
+            return false;
         User user = (User) o;
         return name.equalsIgnoreCase(user.name);
     }
